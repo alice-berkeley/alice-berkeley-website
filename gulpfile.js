@@ -241,7 +241,7 @@ function renderTemplates (callback) {
                 prefix: "@@",
                 basepath: "@file",
                 context: {
-                    baseurl: "dist", // this only works if the variable is all lowercase with no underscore
+                    baseurl: "", // this only works if the variable is all lowercase with no underscore
                 },
             }),
             htmlMin({

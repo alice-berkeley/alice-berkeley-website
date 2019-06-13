@@ -1,0 +1,21 @@
+.global_header
+    width 100%
+    border-bottom 2px solid $cl--second--dark
+
+    &__inner
+        contain()
+        flex-direction column
+        +above(3)
+            flex-direction row
+            align-items flex-end
+            justify-content space-between
+        padding $sp--double 0
+
+    &__title_and_summary
+        flex 1 1 auto
+
+    &__profile_figure
+        flex 0 0 20rem
+        mt()
+        +above(3)
+            mt(0)
