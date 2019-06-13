@@ -1,7 +1,7 @@
 .cvs_and_contact
     mt($sp--double)
     width 100%
-    border-top 2px solid $cl--second--dark
+    border-top 2px solid white
     padding-top $sp--double
 
     &__list
@@ -12,13 +12,19 @@
         justify-content space-between
 
     &__item
+        display flex
+        align-items stretch
         flex 0 0 100%
         +above(3)
             flex 0 0 49%
         +above(6)
             flex 0 0 32%
         display flex
-        height 100%
+        +below(2)
+            mt()
+        +above(3)
+            min-height 100%
+        bxsh-simple()
 
         &:nth-child(even)
             +between(3,5)
@@ -41,29 +47,66 @@
             margin-right auto
 
     &__cv_anchor
+        pos-r()
         display flex
         flex-direction column
         align-items stretch
         height 100%
-        box-shadow inset 0 0 0 $cl--third
+        width 100%
+        background-color white
+        padding-bottom 4px
 
         &:active
         &:focus
         &:hover
-            box-shadow inset 0 -4px 0 $cl--third
+
+            &::before
+                width 100%
+
+        &::before
+            trans($properties: "width")
+            content ''
+            position absolute
+            bottom 0
+            left 0
+            height 4px
+            width 0
+            background-color $cl--second
 
     &__cv_image
         flex 0 0 auto
-        width 100%
+        min-width 100%
 
     &__cv_title
         trans()
         flex 1 1 auto
         mt(0)
+        width 100%
         background-color white
         padding $sp--half
 
-    &__contact_details
-        background-color white
+    &__contact_details_anchor
+        trans($properties: "background-color")
+        display flex
+        flex-direction column
+        align-items center
+        justify-content center
         height 100%
-        padding $sp--half
+        width 100%
+        background-color $cl--second--low
+        padding $sp
+
+        &:active
+        &:focus
+        &:hover
+            background-color $cl--second--dark
+
+            & ^[0]__contact_details_anchor_text
+                transform scale(1.1)
+
+    &__contact_details_anchor_text
+        trans($properties: "transform")
+        text-shadow 0 0 .24em $cl--second--dark
+        fz-scale--two()
+        text-align center
+        color white

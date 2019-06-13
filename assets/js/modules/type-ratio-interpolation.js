@@ -16,9 +16,9 @@ module.exports = {
     // store the result in a CSS custom property
     init: () => {
         // add smallest type ratio from variables.styl here
-        let typeRatioSmall = 1.125;
+        let typeRatioSmall = 1.13;
         // add largest type ratio from variables.styl here
-        let typeRatioLarge = 1.24;
+        let typeRatioLarge = 1.26;
         // get current viewport width
         let screenWidth = window.innerWidth;
         // apply the ratio scaling function
