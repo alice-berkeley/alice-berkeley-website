@@ -24,7 +24,7 @@ const cssImport    = require("gulp-cssimport");
 // lint js while developing
 const eslint       = require("gulp-eslint");
 // minify html files after templates are rendered
-// docs here: https://github.com/kangax/html-minifier
+// dist here: https://github.com/kangax/html-minifier
 const htmlMin      = require("gulp-htmlmin");
 // log task completion to the terminal, pulled out from gutil (which is now deprecated)
 const log          = require("fancy-log");
@@ -70,17 +70,17 @@ const PATHS = {
     },
     files: {
         entry: "templates/pages/*.html",
-        dest: "./docs",
+        dest: "./dist",
         watch: "templates/**/*",
     },
     images: {
         entry: "assets/images/*",
-        dest: "docs/assets/images",
+        dest: "dist/assets/images",
         watch: "assets/images/**/*",
     },
     javascript: {
         common: {
-            dest: "docs/assets/js",
+            dest: "dist/assets/js",
         },
         app: {
             outputName: "app.js",
@@ -94,14 +94,14 @@ const PATHS = {
         },
         final: {
             outputName: "app.min.js",
-            app: "docs/assets/js/app.js",
-            vendor: "docs/assets/js/vendor.js",
+            app: "dist/assets/js/app.js",
+            vendor: "dist/assets/js/vendor.js",
             watch: "assets/js/**/*",
         },
     },
     styles: {
         common: {
-            dest: "docs/assets/css",
+            dest: "dist/assets/css",
         },
         stylus: {
             outputName: "app.css",
@@ -241,7 +241,7 @@ function renderTemplates (callback) {
                 prefix: "@@",
                 basepath: "@file",
                 context: {
-                    baseurl: "https://www.aliceberkeley.com", // this only works if the variable is all lowercase with no underscore
+                    baseurl: "https://alice-berkeley.github.io/alice-berkeley-website/dist", // this only works if the variable is all lowercase with no underscore
                 },
             }),
             htmlMin({
@@ -285,11 +285,11 @@ gulp.task("images", minifyImages);
 function watch() {
     browserSync.init({
         server: {
-            baseDir: "./docs",
+            baseDir: "./dist",
         },
         notify: false,
         browser: ["firefox", "google chrome"],
-        files: ["docs/assets/css/*.min.css"],
+        files: ["dist/assets/css/*.min.css"],
         reloadOnRestart: true,
     });
     gulp.watch(PATHS.files.watch, ["files"]).on("change", browserSync.reload);
