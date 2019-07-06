@@ -70,17 +70,17 @@ const PATHS = {
     },
     files: {
         entry: "templates/pages/*.html",
-        dest: "./dist",
+        dest: "./docs",
         watch: "templates/**/*",
     },
     images: {
         entry: "assets/images/*",
-        dest: "dist/assets/images",
+        dest: "docs/assets/images",
         watch: "assets/images/**/*",
     },
     javascript: {
         common: {
-            dest: "dist/assets/js",
+            dest: "docs/assets/js",
         },
         app: {
             outputName: "app.js",
@@ -94,14 +94,14 @@ const PATHS = {
         },
         final: {
             outputName: "app.min.js",
-            app: "dist/assets/js/app.js",
-            vendor: "dist/assets/js/vendor.js",
+            app: "docs/assets/js/app.js",
+            vendor: "docs/assets/js/vendor.js",
             watch: "assets/js/**/*",
         },
     },
     styles: {
         common: {
-            dest: "dist/assets/css",
+            dest: "docs/assets/css",
         },
         stylus: {
             outputName: "app.css",
@@ -285,11 +285,11 @@ gulp.task("images", minifyImages);
 function watch() {
     browserSync.init({
         server: {
-            baseDir: "./dist",
+            baseDir: "./docs",
         },
         notify: false,
         browser: ["firefox", "google chrome"],
-        files: ["dist/assets/css/*.min.css"],
+        files: ["docs/assets/css/*.min.css"],
         reloadOnRestart: true,
     });
     gulp.watch(PATHS.files.watch, ["files"]).on("change", browserSync.reload);
