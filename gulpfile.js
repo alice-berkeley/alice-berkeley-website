@@ -70,17 +70,17 @@ const PATHS = {
     },
     files: {
         entry: "templates/pages/*.html",
-        dest: "./docs",
+        dest: "./",
         watch: "templates/**/*",
     },
     images: {
         entry: "assets/images/*",
-        dest: "docs/assets/images",
+        dest: "dist/assets/images",
         watch: "assets/images/**/*",
     },
     javascript: {
         common: {
-            dest: "docs/assets/js",
+            dest: "dist/assets/js",
         },
         app: {
             outputName: "app.js",
@@ -94,14 +94,14 @@ const PATHS = {
         },
         final: {
             outputName: "app.min.js",
-            app: "docs/assets/js/app.js",
-            vendor: "docs/assets/js/vendor.js",
+            app: "dist/assets/js/app.js",
+            vendor: "dist/assets/js/vendor.js",
             watch: "assets/js/**/*",
         },
     },
     styles: {
         common: {
-            dest: "docs/assets/css",
+            dest: "dist/assets/css",
         },
         stylus: {
             outputName: "app.css",
@@ -241,7 +241,7 @@ function renderTemplates (callback) {
                 prefix: "@@",
                 basepath: "@file",
                 context: {
-                    baseurl: "https://www.aliceberkeley.com", // this only works if the variable is all lowercase with no underscore
+                    baseurl: "https://www.aliceberkeley.com/dist", // this only works if the variable is all lowercase with no underscore
                 },
             }),
             htmlMin({
@@ -284,13 +284,13 @@ gulp.task("images", minifyImages);
 // watch function to fire appropriate tasks on file change
 function watch() {
     browserSync.init({
-        server: {
-            baseDir: "./docs",
-        },
+        files: ["dist/assets/css/*.min.css"],
         notify: false,
-        browser: ["firefox", "google chrome"],
-        files: ["docs/assets/css/*.min.css"],
+        open: false,
         reloadOnRestart: true,
+        server: {
+            baseDir: "./dist",
+        },
     });
     gulp.watch(PATHS.files.watch, ["files"]).on("change", browserSync.reload);
     gulp.watch(PATHS.images.watch, ["images"]).on("change", browserSync.reload);
