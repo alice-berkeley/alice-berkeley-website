@@ -241,8 +241,11 @@ function renderTemplates (callback) {
                 prefix: "@@",
                 basepath: "@file",
                 context: {
-                    // https://www.aliceberkeley.com/dist
-                    baseurl: "/dist", // this only works if the variable is all lowercase with no underscore
+                    // local:
+                    // `/dist`
+                    // production:
+                    // `https://www.aliceberkeley.com/dist`
+                    baseurl: "https://www.aliceberkeley.com/dist", // this only works if the variable is all lowercase with no underscore
                 },
             }),
             htmlMin({
