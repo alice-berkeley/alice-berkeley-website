@@ -241,7 +241,8 @@ function renderTemplates (callback) {
                 prefix: "@@",
                 basepath: "@file",
                 context: {
-                    baseurl: "https://www.aliceberkeley.com/dist", // this only works if the variable is all lowercase with no underscore
+                    // https://www.aliceberkeley.com/dist
+                    baseurl: "/dist", // this only works if the variable is all lowercase with no underscore
                 },
             }),
             htmlMin({
@@ -289,7 +290,7 @@ function watch() {
         open: false,
         reloadOnRestart: true,
         server: {
-            baseDir: "./dist",
+            baseDir: "./",
         },
     });
     gulp.watch(PATHS.files.watch, ["files"]).on("change", browserSync.reload);
