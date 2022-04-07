@@ -643,8 +643,8 @@ sup {
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
     text-shadow: 0 0 0.24em #005e60;
-    font-size: 1.2769rem;
-    font-size: var(--fz-ratio-power--two);
+    font-size: 1.26rem;
+    font-size: var(--fz-ratio-power--one);
     text-align: center;
     color: #fff;
 }
