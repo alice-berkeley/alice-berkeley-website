@@ -374,17 +374,17 @@ h4 + p {
 p.reading_content {
     width: 74ch;
 }
-.reading_content p > a,
-.reading_content p > a:visited {
-    color: #2753a1;
+p a,
+p a:visited {
+    color: hsl(184.2, 90.5%, 24.7%);
 }
-p > a:active,
-p > a:focus,
-p > a:hover,
-p > a:visited:active,
-p > a:visited:focus,
-p > a:visited:hover {
-    color: #224194;
+p a:active,
+p a:focus,
+p a:hover,
+p a:visited:active,
+p a:visited:focus,
+p a:visited:hover {
+    color: hsl(184.2, 90.5%, 14.7%);
 }
 a,
 a:visited {
